@@ -17,4 +17,10 @@ export class UsersService {
   async getUser(username: string) {
     return await this.em.findOne(User, { username: username });
   }
+
+  @CreateRequestContext()
+  async createUser(username: string, hash: string) {
+    const user = new User(username, hash);
+    return await this.em.persistAndFlush(user);
+  }
 }
