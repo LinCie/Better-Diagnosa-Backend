@@ -4,7 +4,7 @@ import {
   MikroORM,
 } from '@mikro-orm/sqlite';
 import { Injectable } from '@nestjs/common';
-import { User } from 'src/entities/User.entity';
+import { User } from '@/entities/User.entity';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -23,6 +23,7 @@ export class UsersService {
   async createUser(username: string, password: string) {
     const hash = await bcrypt.hash(password, 10);
     const user = new User(username, hash);
-    return await this.em.persistAndFlush(user);
+    await this.em.persistAndFlush(user);
+    return user;
   }
 }
