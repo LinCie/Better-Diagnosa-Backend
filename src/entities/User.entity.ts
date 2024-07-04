@@ -11,6 +11,9 @@ export class User extends BaseEntity {
   @Property()
   hash!: string;
 
+  @Property()
+  roles: string[];
+
   @OneToOne(() => History, (history) => history.user, {
     owner: true,
     orphanRemoval: true,
