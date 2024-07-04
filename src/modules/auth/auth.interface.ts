@@ -1,10 +1,7 @@
 import { Request } from 'express';
 
 export interface loginRequest extends Request {
-  user: {
-    username: string;
-    password: string;
-  };
+  user: any;
 }
 
 export interface signUpBody {

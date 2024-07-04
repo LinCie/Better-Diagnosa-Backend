@@ -6,10 +6,10 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     AuthModule,
     UsersModule,
     MikroOrmModule.forRoot(),
-    ConfigModule.forRoot(),
   ],
   controllers: [],
   providers: [],
