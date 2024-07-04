@@ -1,6 +1,6 @@
 import { CreateRequestContext, MikroORM } from '@mikro-orm/sqlite';
 import { Injectable } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '@/modules/users/users.service';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -18,5 +18,11 @@ export class AuthService {
       return { username: user.username, id: user.id };
     }
     return null;
+  }
+
+  @CreateRequestContext()
+  async createUser(username: string, password: string) {
+    await this.createUser(username, password);
+    return;
   }
 }
