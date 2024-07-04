@@ -22,7 +22,7 @@ export class AuthService {
 
   @CreateRequestContext()
   async createUser(username: string, password: string) {
-    await this.createUser(username, password);
-    return;
+    await this.usersService.createUser(username, password);
+    return null;
   }
 }
