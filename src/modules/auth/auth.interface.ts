@@ -1,7 +1,8 @@
+import { User } from '@/entities/User.entity';
 import { Request } from 'express';
 
 export interface loginRequest extends Request {
-  user: any;
+  user: User;
 }
 
 export interface signUpBody {
