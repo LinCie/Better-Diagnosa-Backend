@@ -38,5 +38,10 @@ export class QuestionController {
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  async deleteQuestion() {}
+  async deleteQuestion(
+    @Param('id') id: string,
+    @Request() req: RequestWithUser,
+  ) {
+    return this.questionService.deleteQuestion(Number(id), req.user);
+  }
 }
