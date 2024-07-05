@@ -4,6 +4,7 @@ import { UsersModule } from './modules/users/users.module';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { ConfigModule } from '@nestjs/config';
 import { QuestionModule } from './modules/question/question.module';
+import { HistoryModule } from './modules/history/history.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { QuestionModule } from './modules/question/question.module';
     UsersModule,
     MikroOrmModule.forRoot(),
     QuestionModule,
+    HistoryModule,
   ],
   controllers: [],
   providers: [],
