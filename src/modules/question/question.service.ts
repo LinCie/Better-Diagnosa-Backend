@@ -20,6 +20,11 @@ export class QuestionService {
   ) {}
 
   @CreateRequestContext()
+  async getQuestions() {
+    return this.em.findAll(Question, {});
+  }
+
+  @CreateRequestContext()
   async createQuestion(user: User, data: QuestionData) {
     if (!user.roles.includes('ADMIN')) {
       throw new UnauthorizedException('admin only route');

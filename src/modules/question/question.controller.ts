@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Delete,
+  Get,
   Param,
   Post,
   Put,
@@ -16,6 +17,12 @@ import { QuestionData } from './question.interface';
 @Controller('question')
 export class QuestionController {
   constructor(private readonly questionService: QuestionService) {}
+
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  async getQuestions() {
+    return this.questionService.getQuestions();
+  }
 
   @UseGuards(JwtAuthGuard)
   @Post()
