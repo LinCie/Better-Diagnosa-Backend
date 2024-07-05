@@ -1,3 +1,4 @@
+import { History } from '@/entities/History.entity';
 import { User } from '@/entities/User.entity';
 import {
   CreateRequestContext,
@@ -15,7 +16,7 @@ export class HistoryService {
 
   @CreateRequestContext()
   async getHistory(user: User) {
-    return user.history;
+    return this.em.findOne(History, { id: user.history.id });
   }
 
   @CreateRequestContext()
