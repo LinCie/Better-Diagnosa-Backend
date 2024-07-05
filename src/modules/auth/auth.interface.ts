@@ -9,3 +9,7 @@ export interface signUpBody {
   username: string;
   password: string;
 }
+
+export interface RequestWithUser extends Request {
+  user: User;
+}
