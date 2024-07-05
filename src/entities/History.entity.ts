@@ -8,7 +8,7 @@ export class History extends BaseEntity {
   user!: User;
 
   @Property()
-  diagnosis!: { isDengue: boolean; time: number }[];
+  diagnosis: { isDengue: boolean; time: number }[] = [];
 
   constructor() {
     super();

@@ -12,13 +12,13 @@ export class User extends BaseEntity {
   hash!: string;
 
   @Property()
-  roles: string[];
+  roles: string[] = [];
 
   @OneToOne(() => History, (history) => history.user, {
     owner: true,
     orphanRemoval: true,
   })
-  history: History;
+  history: History = new History();
 
   constructor(username: string, hash: string) {
     super();
