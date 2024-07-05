@@ -18,6 +18,7 @@ export class HistoryService {
     return user.history;
   }
 
+  @CreateRequestContext()
   async addHistory(user: User, isDengue: boolean) {
     user.history.diagnosis.push({ isDengue, time: Date.now() });
     return user.history;
