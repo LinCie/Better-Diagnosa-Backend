@@ -24,8 +24,8 @@ export class AuthService {
 
   @CreateRequestContext()
   async createUser(username: string, password: string) {
-    await this.usersService.createUser(username, password);
-    return null;
+    const user = await this.usersService.createUser(username, password);
+    return this.login(user);
   }
 
   async login(user: { username: string; id: number }) {
