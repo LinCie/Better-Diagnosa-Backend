@@ -1,7 +1,9 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
+  Param,
   Post,
   Request,
   UseGuards,
@@ -27,5 +29,14 @@ export class HistoryController {
     @Body() body: { isDengue: boolean },
   ) {
     return this.historyService.addHistory(req.user, body.isDengue);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id')
+  async deleteHistory(
+    @Request() req: RequestWithUser,
+    @Param('id') id: string,
+  ) {
+    return this.historyService.deleteHistory(Number(id), req.user);
   }
 }
