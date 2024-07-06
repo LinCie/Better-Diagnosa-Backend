@@ -17,7 +17,7 @@ export class HistoryController {
   @UseGuards(JwtAuthGuard)
   @Get()
   async getHistory(@Request() req: RequestWithUser) {
-    return this.historyService.getHistory(req.user);
+    return this.historyService.getHistories(req.user);
   }
 
   @UseGuards(JwtAuthGuard)

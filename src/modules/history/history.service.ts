@@ -15,13 +15,17 @@ export class HistoryService {
   ) {}
 
   @CreateRequestContext()
-  async getHistory(user: User) {
-    return this.em.findOne(History, { id: user.history.id });
+  async getHistories(user: User) {
+    await user.histories.init();
+    return user.histories;
   }
 
   @CreateRequestContext()
   async addHistory(user: User, isDengue: boolean) {
-    user.history.diagnosis.push({ isDengue, time: Date.now() });
-    return user.history;
+    const newHistory = new History(isDengue);
+    this.em.persist(newHistory);
+    user.histories.add(newHistory);
+    await this.em.flush();
+    return newHistory;
   }
 }

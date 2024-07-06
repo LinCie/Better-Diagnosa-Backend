@@ -1,4 +1,10 @@
-import { Entity, OneToOne, Property, Unique } from '@mikro-orm/core';
+import {
+  Collection,
+  Entity,
+  OneToMany,
+  Property,
+  Unique,
+} from '@mikro-orm/core';
 import { BaseEntity } from './BaseEntity.entity';
 import { History } from './History.entity';
 
@@ -14,11 +20,10 @@ export class User extends BaseEntity {
   @Property()
   roles: string[] = [];
 
-  @OneToOne(() => History, (history) => history.user, {
-    owner: true,
+  @OneToMany(() => History, (history) => history.user, {
     orphanRemoval: true,
   })
-  history: History = new History();
+  histories: Collection<History> = new Collection<History>(this);
 
   constructor(username: string, hash: string) {
     super();
