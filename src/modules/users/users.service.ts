@@ -27,4 +27,8 @@ export class UsersService {
     await this.em.persistAndFlush(user);
     return user;
   }
+
+  async getUsername(user: User) {
+    return user.username;
+  }
 }
