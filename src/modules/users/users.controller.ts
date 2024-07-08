@@ -12,4 +12,10 @@ export class UsersController {
   async getUsername(@Request() req: RequestWithUser) {
     return this.usersService.getUsername(req.user);
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('userdata')
+  async getUserData(@Request() req: RequestWithUser) {
+    return this.usersService.getUserData(req.user);
+  }
 }

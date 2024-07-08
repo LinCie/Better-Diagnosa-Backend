@@ -34,6 +34,6 @@ export class UsersService {
   }
 
   getUserData(user: User) {
-    return omit;
+    return omit({ ...user }, ['hash']);
   }
 }
