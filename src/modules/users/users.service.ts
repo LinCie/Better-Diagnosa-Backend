@@ -5,6 +5,7 @@ import {
 } from '@mikro-orm/sqlite';
 import { Injectable } from '@nestjs/common';
 import { User } from '@/entities/User.entity';
+import { omit } from 'lodash';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -30,5 +31,9 @@ export class UsersService {
 
   async getUsername(user: User) {
     return user.username;
+  }
+
+  getUserData(user: User) {
+    return omit;
   }
 }
