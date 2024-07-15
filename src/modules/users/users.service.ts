@@ -36,4 +36,8 @@ export class UsersService {
   getUserData(user: User) {
     return omit({ ...user }, ['hash']);
   }
+
+  async getAllUser() {
+    return await this.em.findAll(User);
+  }
 }

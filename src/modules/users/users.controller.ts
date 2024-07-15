@@ -18,4 +18,10 @@ export class UsersController {
   async getUserData(@Request() req: RequestWithUser) {
     return this.usersService.getUserData(req.user);
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  async getAllUser() {
+    return this.usersService.getAllUser();
+  }
 }
