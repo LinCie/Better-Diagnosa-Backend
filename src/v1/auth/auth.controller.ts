@@ -9,8 +9,8 @@ import { JwtAuthGuard } from './jwt-auth.guard';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @UseGuards(LocalAuthGuard)
   @Post('login')
+  @UseGuards(LocalAuthGuard)
   async login(@Request() req: RequestWithUser) {
     return this.authService.login(req.user);
   }
@@ -20,8 +20,8 @@ export class AuthController {
     return this.authService.signUp(createUserDto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Post('refresh')
+  @UseGuards(JwtAuthGuard)
   async refresh(@Request() req: RequestWithUser) {
     return this.authService.refresh(req.user);
   }

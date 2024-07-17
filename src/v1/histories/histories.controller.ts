@@ -19,8 +19,8 @@ import { RequestWithUser } from '../auth/interfaces';
 export class HistoriesController {
   constructor(private readonly historiesService: HistoriesService) {}
 
-  @UseGuards(JwtAuthGuard)
   @Post()
+  @UseGuards(JwtAuthGuard)
   create(
     @Request() req: RequestWithUser,
     @Body() createHistoryDto: CreateHistoryDto,
@@ -28,26 +28,26 @@ export class HistoriesController {
     return this.historiesService.create(req.user, createHistoryDto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get()
+  @UseGuards(JwtAuthGuard)
   findAll() {
     return this.historiesService.findAll();
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   findOne(@Param('id') id: string) {
     return this.historiesService.findOne(+id);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Patch(':id')
+  @UseGuards(JwtAuthGuard)
   update(@Param('id') id: string, @Body() updateHistoryDto: UpdateHistoryDto) {
     return this.historiesService.update(+id, updateHistoryDto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Delete(':id')
+  @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string) {
     return this.historiesService.remove(+id);
   }

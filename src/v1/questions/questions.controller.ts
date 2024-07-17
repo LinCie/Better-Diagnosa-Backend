@@ -18,28 +18,28 @@ import { Roles } from '@/decorators';
 export class QuestionsController {
   constructor(private readonly questionsService: QuestionsService) {}
 
+  @Post()
   @UseGuards(JwtAuthGuard)
   @Roles('ADMIN')
-  @Post()
   create(@Body() createQuestionDto: CreateQuestionDto) {
     return this.questionsService.create(createQuestionDto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get()
+  @UseGuards(JwtAuthGuard)
   findAll() {
     return this.questionsService.findAll();
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   findOne(@Param('id') id: string) {
     return this.questionsService.findOne(+id);
   }
 
+  @Patch(':id')
   @UseGuards(JwtAuthGuard)
   @Roles('ADMIN')
-  @Patch(':id')
   update(
     @Param('id') id: string,
     @Body() updateQuestionDto: UpdateQuestionDto,
@@ -47,9 +47,9 @@ export class QuestionsController {
     return this.questionsService.update(+id, updateQuestionDto);
   }
 
+  @Delete(':id')
   @UseGuards(JwtAuthGuard)
   @Roles('ADMIN')
-  @Delete(':id')
   remove(@Param('id') id: string) {
     return this.questionsService.remove(+id);
   }
