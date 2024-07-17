@@ -8,6 +8,7 @@ import { HistoryModule } from './modules/history/history.module';
 import { UsersModule } from './v1/users/users.module';
 import { AuthModule } from './v1/auth/auth.module';
 import { HistoriesModule } from './v1/histories/histories.module';
+import { QuestionsModule } from './v1/questions/questions.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { HistoriesModule } from './v1/histories/histories.module';
     QuestionModule,
     HistoryModule,
     HistoriesModule,
+    QuestionsModule,
   ],
   controllers: [],
   providers: [],
