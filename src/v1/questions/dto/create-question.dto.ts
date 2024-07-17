@@ -1,10 +1,10 @@
-import { IsInt, IsNotEmpty, Max, Min } from 'class-validator';
+import { IsNotEmpty, IsNumber, Max, Min } from 'class-validator';
 
 export class CreateQuestionDto {
   @IsNotEmpty()
   question: string;
 
-  @IsInt()
+  @IsNumber()
   @Min(0)
   @Max(1)
   belief: number;
