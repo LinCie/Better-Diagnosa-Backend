@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AuthModule } from './modules/auth/auth.module';
+import { AuthModule as AuthModuleOld } from './modules/auth/auth.module';
 import { UsersModule as UsersModuleOld } from './modules/users/users.module';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { ConfigModule } from '@nestjs/config';
 import { QuestionModule } from './modules/question/question.module';
 import { HistoryModule } from './modules/history/history.module';
 import { UsersModule } from './v1/users/users.module';
+import { AuthModule } from './v1/auth/auth.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { UsersModule } from './v1/users/users.module';
     MikroOrmModule.forRoot(),
     UsersModuleOld,
     UsersModule,
+    AuthModuleOld,
     AuthModule,
     QuestionModule,
     HistoryModule,
