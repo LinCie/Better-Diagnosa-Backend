@@ -38,6 +38,6 @@ export class UsersService {
   }
 
   async getAllUser() {
-    return await this.em.findAll(User);
+    return await this.em.findAll(User, { populate: ['histories'] });
   }
 }
