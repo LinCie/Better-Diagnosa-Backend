@@ -23,11 +23,11 @@ export class AuthController {
     @Request() req: RequestWithUser,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const { access_token, refresh_token } = await this.authService.login(
+    const { access_token, refresh_token, user } = await this.authService.login(
       req.user,
     );
-    response.cookie('user', JSON.stringify(req.user));
-    return { access_token, refresh_token };
+    response.cookie('user', JSON.stringify(user));
+    return { access_token, refresh_token, user };
   }
 
   @Post('signup')
@@ -38,7 +38,7 @@ export class AuthController {
     const { access_token, refresh_token, user } =
       await this.authService.signUp(createUserDto);
     response.cookie('user', JSON.stringify(user));
-    return { access_token, refresh_token };
+    return { access_token, refresh_token, user };
   }
 
   @Post('refresh')
