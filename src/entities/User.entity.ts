@@ -14,7 +14,7 @@ export class User extends BaseEntity {
   @Unique()
   username!: string;
 
-  @Property()
+  @Property({ hidden: true })
   hash!: string;
 
   @Property()
