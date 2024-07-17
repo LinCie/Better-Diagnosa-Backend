@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateHistoryDto } from './dto/create-history.dto';
 import { UpdateHistoryDto } from './dto/update-history.dto';
 import { History, User } from '@/entities';
-import { EntityManager } from '@mikro-orm/sqlite';
+import { EntityManager } from '@mikro-orm/mongodb';
 
 @Injectable()
 export class HistoriesService {
@@ -19,16 +19,16 @@ export class HistoriesService {
     return this.em.findAll(History);
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.em.findOneOrFail(History, { id });
   }
 
-  async update(id: number, updateHistoryDto: UpdateHistoryDto) {
+  async update(id: string, updateHistoryDto: UpdateHistoryDto) {
     const history = await this.em.findOneOrFail(History, { id });
     this.em.assign(history, updateHistoryDto);
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const history = await this.em.findOneOrFail(History, { id });
     await this.em.removeAndFlush(history);
     return;

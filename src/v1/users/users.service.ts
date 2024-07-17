@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { EntityManager } from '@mikro-orm/sqlite';
+import { EntityManager } from '@mikro-orm/mongodb';
 import * as bcrypt from 'bcrypt';
 import { User } from '@/entities';
 
@@ -23,18 +23,18 @@ export class UsersService {
     return this.em.findAll(User, { populate: ['histories'] });
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.em.findOneOrFail(User, { id });
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto) {
+  async update(id: string, updateUserDto: UpdateUserDto) {
     const user = await this.em.findOneOrFail(User, { id });
     this.em.assign(user, updateUserDto);
     await this.em.flush();
     return await this.em.findOne(User, { id });
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const user = await this.em.findOneOrFail(User, { id });
     await this.em.removeAndFlush(user);
     return;

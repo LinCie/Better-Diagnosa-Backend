@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
-import { EntityManager } from '@mikro-orm/sqlite';
+import { EntityManager } from '@mikro-orm/mongodb';
 import { Question } from '@/entities';
 
 @Injectable()
@@ -23,18 +23,18 @@ export class QuestionsService {
     return this.em.findAll(Question);
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.em.findOneOrFail(Question, { id });
   }
 
-  async update(id: number, updateQuestionDto: UpdateQuestionDto) {
+  async update(id: string, updateQuestionDto: UpdateQuestionDto) {
     const question = await this.em.findOneOrFail(Question, { id });
     this.em.assign(question, updateQuestionDto);
     this.em.flush();
     return this.em.findOne(Question, { id });
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const question = await this.em.findOneOrFail(Question, { id });
     await this.em.removeAndFlush(question);
     return;

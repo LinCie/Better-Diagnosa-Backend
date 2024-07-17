@@ -37,18 +37,18 @@ export class HistoriesController {
   @Get(':id')
   @UseGuards(JwtAuthGuard)
   findOne(@Param('id') id: string) {
-    return this.historiesService.findOne(+id);
+    return this.historiesService.findOne(id);
   }
 
   @Patch(':id')
   @UseGuards(JwtAuthGuard)
   update(@Param('id') id: string, @Body() updateHistoryDto: UpdateHistoryDto) {
-    return this.historiesService.update(+id, updateHistoryDto);
+    return this.historiesService.update(id, updateHistoryDto);
   }
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string) {
-    return this.historiesService.remove(+id);
+    return this.historiesService.remove(id);
   }
 }
