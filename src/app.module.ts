@@ -26,11 +26,6 @@ import { RolesGuard } from './guards/roles.guard';
     QuestionsModule,
   ],
   controllers: [],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: RolesGuard,
-    },
-  ],
+  providers: [],
 })
 export class AppModule {}
