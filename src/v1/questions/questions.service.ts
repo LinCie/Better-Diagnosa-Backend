@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
 import { EntityManager } from '@mikro-orm/mongodb';
-import { Question } from '@/entities';
+import { Question } from '../../entities';
 
 @Injectable()
 export class QuestionsService {

@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { EntityManager } from '@mikro-orm/mongodb';
 import * as bcrypt from 'bcrypt';
-import { User } from '@/entities';
+import { User } from '../../entities';
 
 @Injectable()
 export class UsersService {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateHistoryDto } from './dto/create-history.dto';
 import { UpdateHistoryDto } from './dto/update-history.dto';
-import { History, User } from '@/entities';
+import { History, User } from '../../entities';
 import { EntityManager } from '@mikro-orm/mongodb';
 
 @Injectable()
