@@ -12,7 +12,7 @@ import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { Roles } from '@/decorators';
+import { Roles } from '../../decorators';
 
 @Controller('v1/questions')
 export class QuestionsController {
