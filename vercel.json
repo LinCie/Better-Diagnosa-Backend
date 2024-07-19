@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/main.ts",
+      "dest": "client/index.html",
       "methods": ["GET", "POST", "PATCH", "DELETE"]
     }
   ]
