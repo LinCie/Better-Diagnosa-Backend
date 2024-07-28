@@ -24,7 +24,7 @@ export class UsersService {
   }
 
   findOne(id: string) {
-    return this.em.findOneOrFail(User, { id });
+    return this.em.findOneOrFail(User, { id }, { populate: ['histories'] });
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
@@ -41,6 +41,10 @@ export class UsersService {
   }
 
   findOneByUsername(username: string) {
-    return this.em.findOneOrFail(User, { username });
+    return this.em.findOneOrFail(
+      User,
+      { username },
+      { populate: ['histories'] },
+    );
   }
 }
